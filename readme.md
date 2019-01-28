@@ -1,3 +1,6 @@
+# My Second Laravel Project
+# Blog Post Application with advance features
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
