@@ -14,3 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    
+   Route::get('posts/create',[
+       'uses' => 'PostsController@create',
+       'as' => 'posts.create'
+   ]);
+
+   Route::get('posts/store',[
+       'uses' => 'PostsController@store',
+       'as' => 'posts.store'
+   ]);
+
+});
+
