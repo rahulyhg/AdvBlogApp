@@ -2,6 +2,21 @@
 
 @section('content')
 
+    <!-- Displaying the errors -->
+    @if (count($errors) > 0)
+        
+        <ul class="list-group">
+            @foreach ($errors->all() as $error)
+                
+                <li class="list-group-item text-danger">
+                    {{$error}}
+                </li>
+
+            @endforeach
+        </ul>    
+
+    @endif
+
     <!-- create card is starting from here-->
     <div class="card">
 
@@ -11,7 +26,7 @@
 
         <div class="card-body">
 
-        <form action="{{route('posts.store')}}" method="POST">
+        <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
                 
                  {{ csrf_field() }}
 

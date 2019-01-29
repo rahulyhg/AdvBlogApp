@@ -74,7 +74,7 @@
             </div>
         </nav>
             <!-- Main container goes from here!!! -->        
-            <div class="container mt-2" id="mainLayoutContainer">
+            <div class="container mt-3" id="mainLayoutContainer">
                 
                 @if (Auth::check())
                     <!-- Side nav bar division goes from here!!! -->
@@ -82,12 +82,23 @@
                         <div class="col-lg-4">
                             <!-- Side Navigation bar will go from here!!! -->
                             <ul class="list-group">
+
                                 <li class="list-group-item">
                                     <a href="/home">Dashbord</a>
                                 </li>
+
                                 <li class="list-group-item">
-                                <a href="{{route('posts.create')}}">Create a new Post</a>
+                                        <a href="{{route('categories.show')}}">Categories</a>
                                 </li>
+
+                                <li class="list-group-item">
+                                    <a href="{{route('categories.create')}}">Create a Category</a>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <a href="{{route('posts.create')}}">Create a new Post</a>
+                                </li>
+
                             </ul>
                         </div>
                     <!-- Side nav bar division ends from here!!! -->

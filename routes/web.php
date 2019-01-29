@@ -21,15 +21,33 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     
-   Route::get('posts/create',[
-       'uses' => 'PostsController@create',
-       'as' => 'posts.create'
-   ]);
+    Route::get('posts/create',[
+        'uses' => 'PostsController@create',
+        'as' => 'posts.create'
+    ]);
 
-   Route::get('posts/store',[
-       'uses' => 'PostsController@store',
-       'as' => 'posts.store'
-   ]);
+
+    Route::post('posts/store',[
+        'uses' => 'PostsController@store',
+        'as' => 'posts.store'
+    ]);
+
+
+    Route::get('categories/create',[
+        'uses' => 'CategoriesController@create',
+        'as' => 'categories.create'
+    ]);
+
+
+    Route::post('categories/store',[
+        'uses' => 'CategoriesController@store',
+        'as' => 'categories.store'
+    ]);
+
+    Route::get('categories/show',[
+        'uses' => 'CategoriesController@index',
+        'as' => 'categories.show'
+    ]);
 
 });
 
