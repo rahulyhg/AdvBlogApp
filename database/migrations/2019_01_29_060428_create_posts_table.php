@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('slug');
             $table->text('content');
 
             // TO make relationship with the category table
@@ -24,6 +25,7 @@ class CreatePostsTable extends Migration
             
             // To feature a image associated with the Post
             $table->string('featured');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -20,8 +20,12 @@
                             <tr>
                                 <td>
                                     {{ $item->name }}
-                                    <button type="button" class="btn btn-outline-danger float-right ml-1 btn-sm">Delete</button>
-                                    <button type="button" class="btn btn-outline-primary float-right btn-sm">Edit</button>
+                                
+                                <!-- To delete a category -->
+                                <a href="{{route('categories.delete', ['id' => $item->id])}}"><button type="button" class="btn btn-outline-danger float-right ml-1 btn-sm">Delete</button></a>
+
+                                <!-- To edit a category -->
+                                <a href="{{route('categories.edit', ['id' => $item->id])}}"><button type="button" class="btn btn-outline-primary float-right btn-sm">Edit</button></a>
         
                                 </td>
                             </tr>

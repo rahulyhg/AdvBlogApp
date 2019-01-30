@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Session;
 
 class CategoriesController extends Controller
 {
@@ -14,7 +15,11 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.show')->with('categories', Category::all());
+        $categories = Category::all();
+
+        // Sorting the categories
+        $categories = $categories->sortBy('created_at', SORT_REGULAR, true);
+        return view('admin.categories.show')->with('categories', $categories);
     }
 
     /**
@@ -24,7 +29,9 @@ class CategoriesController extends Controller
      */
     public function create()
     {
+        //$createNew = 'yes';
         return view('admin.categories.create');
+        //return view('admin.categories.try')->with('createNew',$createNew);
     }
 
     /**
@@ -44,8 +51,10 @@ class CategoriesController extends Controller
         $category->name = $request->name;
 
         $category->save();
+        
+        Session::flash('success', 'A new Category is successfully created!');  
 
-        return redirect()->back();
+        return redirect()->route('categories.show');
     }
 
     /**
@@ -67,7 +76,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.categories.edit')->with('category', $category);
     }
 
     /**
@@ -79,7 +89,15 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->name = $request->name;
+
+        $category->save();
+
+        Session::flash('updated', ' Category was successfully updated!');  
+
+        return redirect()->route('categories.show');
     }
 
     /**
@@ -90,6 +108,12 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->delete();
+
+        Session::flash('deleted', ' Category was successfully deleted!');
+
+        return redirect()->route('categories.show');
     }
 }

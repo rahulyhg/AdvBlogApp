@@ -52,6 +52,24 @@
                     </div>                    
                 </div>
 
+                <!-- add category form field -->
+                <div class="input-group col-sm-10 mb-3 row">
+                    <select class="form-control" name="category_id" id="category">
+                        <option selected>Choose Your Category</option>
+                        @foreach ($categories as $category)
+
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+
+                        @endforeach
+                    </select>
+
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                    </div>
+                    
+                </div>
+                        
+
                 <!-- Post content field goes from here -->
                 <div class="input-group">
                     <div class="input-group-prepend">
